@@ -104,18 +104,22 @@ my_library = Library(name="OurLibraryTool", location="Melbourne, VIC")
 # Create some books
 book1 = PhysicalBook(isbn="978-3-16-148410-0", title="The Great Gatsby", author="F. Scott Fitzgerald", genre="Fiction")
 book2 = PhysicalBook(isbn="978-0-7432-7356-5", title="To Kill a Mockingbird", author="Harper Lee", genre="Fiction")
+book3 = PhysicalBook(isbn="978-1-4127-7611-9", title="The Lord of the Rings", author="JRR Tolkien", genre="Fantasy")
 
 # Add books to library
 my_library.add_book(book1)
 my_library.add_book(book2)
+my_library.add_book(book3)
 
 # Create members and staff
 member1 = Member(id=1, first_name="John", last_name="Doe", username="johndoe", password_hash="hash123")
 staff1 = Staff(id=101, first_name="Alice", last_name="Smith", username="alicesmith", password_hash="hashadmin", role="Admin", access_level="High")
+staff2 = Staff(id=102, first_name="Frank", last_name="Kirk", username="frankkirk", password_hash="adminhash", role="Admin", access_level="High")
 
 # Add users to library
 my_library.add_member(member1)
 my_library.add_user(staff1)
+my_library.add_user(staff2)
 
 # Member borrows a book
 loan1 = BookLoan(id=1, member=member1, book=book1, due_date="2024-09-20")
@@ -124,3 +128,5 @@ member1.borrow_book(loan1)
 # Staff generates a report
 report = Report(id=1, generated_by=staff1, reservations=[], loans=[loan1])
 staff1.generate_report(my_library, report)
+
+
